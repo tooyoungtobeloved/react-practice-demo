@@ -6,45 +6,55 @@
     max-width: 600px;
     max-height: 400px;
 }
+
+/* 图片样式 */
 .img {
     object-fit: contain;
 }
-.left,.right{
+
+/* 左右切换按钮 */
+.left,
+.right {
     position: absolute;
     z-index: 999;
     cursor: pointer;
-    display: block;
     width: 40px;
     height: 40px;
     border-radius: 50%;
     background-color: #141410;
     color: #fff;
-    display: flex;
+    display: none; /* 默认隐藏 */
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
     font-weight: 600;
 }
-.left{
+
+.left {
     left: 20px;
     top: 50%;
     transform: translateY(-50%);
 }
-.right{
+
+.right {
     right: 20px;
     top: 50%;
     transform: translateY(-50%);
 }
-.dot{
+
+/* 小圆点容器 */
+.dot {
     position: absolute;
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
     background-color: #0008;
-    display: flex;
+    display: none; /* 默认隐藏 */
     padding: 8px;
     border-radius: 15px 15px;
 }
+
+/* 小圆点样式 */
 .dotItem {
     display: block;
     width: 10px;
@@ -54,6 +64,17 @@
     margin: 0 5px;
     cursor: pointer;
 }
+
 .dotItem.active {
     background-color: #fff;
+}
+
+/* 当鼠标悬停在容器上时，显示按钮和索引 */
+.container:hover .left,
+.container:hover .right {
+    display: flex; /* 显示左右按钮 */
+}
+
+.container:hover .dot {
+    display: flex; /* 显示小圆点容器 */
 }
