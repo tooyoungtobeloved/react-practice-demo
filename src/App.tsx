@@ -7,14 +7,14 @@ import './App.css'
 // import DiceRollDemo from './demo/DiceRollDemo'
 // import StarRatingDemo from './demo/StarRatingDemo'
 // import NestedCheckboxesDemo from './demo/NestedCheckboxesDemo';
-
-import TicTacToeDemo from './demo/TicTacToeDemo';
+// import TicTacToeDemo from './demo/TicTacToeDemo';
+import ImageCarouselDemo from './demo/ImageCarouselDemo';
 // todo fielexplore demo
 // todo dialog
 function App() {
   return (
     <>
-      <TicTacToeDemo />
+      <ImageCarouselDemo />
     </>
   )
 }
