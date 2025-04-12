@@ -1,0 +1,30 @@
+.container {
+    background-color: #f6f6ef;
+    padding: 20px;
+    width: 100%;
+}
+
+.job {
+    background-color: #fff;
+    border-radius: 5px;
+    margin: 20px 0;
+    text-align: left;
+    padding: 5px 10px;
+}
+
+.header{
+    color: #ff6601;
+}
+.meta{
+    display: inline-flex;
+    width: 100%;
+}
+.loadmore {
+    padding: 10px;
+    background-color: #ff6601;
+    color: #fff;
+    outline: none;
+    border: 1px #ff6601 solid;
+    cursor: pointer;
+    border-radius: 2px;
+}
