@@ -9,13 +9,13 @@ import './App.css'
 // import NestedCheckboxesDemo from './demo/NestedCheckboxesDemo';
 // import TicTacToeDemo from './demo/TicTacToeDemo';
 // import ImageCarouselDemo from './demo/ImageCarouselDemo';
-import JobBoardDemo from './demo/JobBoardDemo';
-// todo fielexplore demo
+// import JobBoardDemo from './demo/JobBoardDemo';
+import StopWatchDemo from './demo/StopWatchDemo';
 // todo dialog
 function App() {
   return (
     <>
-      <JobBoardDemo />
+      <StopWatchDemo />
     </>
   )
 }

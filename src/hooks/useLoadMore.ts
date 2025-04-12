@@ -18,6 +18,8 @@ export default function useLoadMore<T, ID>(options: LoadMoreOptions<T, ID>) {
   const [items, setItems] = useState<T[]>([]);
   const [ids, setIds] = useState<ID[]>([]);
   const [state, setState] = useState<AsyncState>({ status: "idle" });
+  // 新增：标识是否已经尝试请求过 job 数据
+  const [hasFetchedPage, setHasFetchedPage] = useState(false);
   const isFetchingRef = useRef(false);
 
   // 加载所有数据项的标识集合
@@ -27,16 +29,14 @@ export default function useLoadMore<T, ID>(options: LoadMoreOptions<T, ID>) {
         setState({ status: "loading" });
         const data = await fetchIds();
         if (data.length === 0) {
-          setState({ status: "success" }); // 如果没有数据，直接标记为成功
+          setState({ status: "success" });
         } else {
           setIds(data);
         }
       } catch (error: any) {
         setState({ status: "error", error });
       } finally {
-        if (state.status !== "error") {
-          setState({ status: "success" });
-        }
+        // 注意：此处不要直接标记状态为 success，因为还没加载 job 数据
       }
     }
     loadIds();
@@ -49,36 +49,30 @@ export default function useLoadMore<T, ID>(options: LoadMoreOptions<T, ID>) {
     isFetchingRef.current = true;
     setState({ status: "loading" });
 
-    async function loadPageData(page: number) {
+    async function loadPageData(currentPage: number) {
       try {
-        const startIndex = page * pageSize;
-        const endIndex = Math.min((page + 1) * pageSize, ids.length);
-        const idsToFetch = ids.slice(startIndex, endIndex);
+        const startIndex = currentPage * pageSize;
+        const endIndex = Math.min((currentPage + 1) * pageSize, ids.length);
+        const pageIds = ids.slice(startIndex, endIndex);
 
-        if (idsToFetch.length === 0) {
-          return; // 没有更多数据需要加载
-        }
+        if (pageIds.length === 0) return; // 没有更多数据
 
-        const fetchPromises = idsToFetch.map((id) => fetchItem(id));
+        const fetchPromises = pageIds.map((id) => fetchItem(id));
         const results = await Promise.all(fetchPromises);
-        setItems((prevItems) => [...prevItems, ...results]);
+        setItems((prev) => [...prev, ...results]);
       } catch (error: any) {
         setState({ status: "error", error });
       } finally {
-        isFetchingRef.current = false;
+        setHasFetchedPage(true);
         setState({ status: "success" });
+        isFetchingRef.current = false;
       }
     }
 
     loadPageData(page);
-  }, [page, ids, pageSize]);
+  }, [page, ids, fetchItem, pageSize]);
 
   const canLoadMore = items.length < ids.length;
 
-  return {
-    items,
-    state,
-    canLoadMore,
-    setPage,
-  };
+  return { items, state, canLoadMore, setPage, hasFetchedPage };
 }

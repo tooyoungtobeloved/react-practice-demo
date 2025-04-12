@@ -12,7 +12,8 @@ interface Job {
 }
 
 export default function JobBoard() {
-  const { items: jobs, state, canLoadMore, setPage } = useLoadMore({
+  // 注意：需要从 useLoadMore 中获取 hasFetchedPage
+  const { items: jobs, state, canLoadMore, setPage, hasFetchedPage } = useLoadMore({
     fetchIds,
     fetchItem,
     pageSize: 6,
@@ -50,8 +51,8 @@ export default function JobBoard() {
         </>
       )}
 
-      {/* 空数据提示 */}
-      {jobs.length === 0 && state.status === "success" && (
+      {/* 空数据提示：仅在已加载过 job 数据后 jobs 仍为空才显示 */}
+      {jobs.length === 0 && hasFetchedPage && state.status === "success" && (
         <div className="empty">No jobs available.</div>
       )}
     </div>
