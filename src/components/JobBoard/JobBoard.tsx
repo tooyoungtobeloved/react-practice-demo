@@ -1,5 +1,6 @@
 import useLoadMore from "../../hooks/useLoadMore";
 import "./style.css";
+
 interface Job {
   by: string;
   id: number;
@@ -9,26 +10,49 @@ interface Job {
   type: string;
   url: string;
 }
+
 export default function JobBoard() {
-  const { items: jobs, state, canLoadMore, setPage } = useLoadMore({ fetchIds, fetchItem });
+  const { items: jobs, state, canLoadMore, setPage } = useLoadMore({
+    fetchIds,
+    fetchItem,
+    pageSize: 6,
+  });
+
   return (
     <div className="container">
       <div className="header">Hacker News Jobs Board</div>
+
+      {/* 加载状态 */}
       {state.status === "loading" && <div className="loading">Loading...</div>}
+
+      {/* 错误状态 */}
+      {state.status === "error" && (
+        <div className="error">Error: {state.error?.message}</div>
+      )}
+
+      {/* 数据渲染 */}
       {jobs.length > 0 && (
         <>
-          {jobs.map((job) => {
-            return <Job key={job.id} job={job} />;
-          })}
+          {jobs.map((job) => (
+            <Job key={job.id} job={job} />
+          ))}
+
+          {/* 加载更多按钮 */}
           {canLoadMore && (
             <button
               className="loadmore"
               onClick={() => setPage((prevPage) => prevPage + 1)}
+              disabled={state.status === "loading"}
             >
               {state.status === "loading" ? "Loading..." : "Load More"}
             </button>
           )}
         </>
+      )}
+
+      {/* 空数据提示 */}
+      {jobs.length === 0 && state.status === "success" && (
+        <div className="empty">No jobs available.</div>
       )}
     </div>
   );
@@ -58,21 +82,24 @@ function Job({ job }: { job: Job }) {
   );
 }
 
-async function fetchIds() {
+// 获取所有 job IDs
+async function fetchIds(): Promise<number[]> {
   const response = await fetch(
     "https://hacker-news.firebaseio.com/v0/jobstories.json"
   );
   if (!response.ok) {
-    throw new Error("网络响应异常");
+    throw new Error("Failed to fetch job IDs");
   }
   return response.json();
 }
-async function fetchItem(id: number) {
+
+// 根据 ID 获取 job 详情
+async function fetchItem(id: number): Promise<any> {
   const response = await fetch(
     `https://hacker-news.firebaseio.com/v0/item/${id}.json`
   );
   if (!response.ok) {
-    throw new Error("网络响应异常");
+    throw new Error(`Failed to fetch job with ID: ${id}`);
   }
   return response.json();
 }
