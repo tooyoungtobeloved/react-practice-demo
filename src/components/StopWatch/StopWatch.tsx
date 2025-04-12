@@ -24,6 +24,8 @@ export default function Stopwatch() {
       }
     };
   }, [running]);
+//   requestAnimationFrame(() => {})
+
   const seconds = Math.floor(elapsed / 1000);
   const milliseconds = elapsed % 1000;
   return (
