@@ -1,0 +1,26 @@
+.container {
+    border: 1px solid #ccc;
+    display: flex;
+    min-height: 200px;
+}
+.transferLeft,.transferRight,.transfer {
+    padding: 20px;
+}
+.transferLeft,.transferRight {
+    width: 200px;
+}
+.transfer {
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}
+.btn{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 0;
+    height: 100%;
+}
+ul {
+    list-style: none;
+    padding: 0px;
+}

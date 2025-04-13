@@ -29,13 +29,16 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
-
+*{
+  box-sizing: border-box;
+}
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
-
-
+li{
+  text-align: left;
+}
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

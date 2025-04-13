@@ -1,6 +1,5 @@
 import './App.css'
 // import TodoListDemo from './demo/TodoListDemo';
-// import Child from './components/Child'
 // import Set from './components/Set'
 // import FileExplore from './demo/FileExploreDemo'
 // import DialogDemo from './demo/DialogDemo'
@@ -10,12 +9,13 @@ import './App.css'
 // import TicTacToeDemo from './demo/TicTacToeDemo';
 // import ImageCarouselDemo from './demo/ImageCarouselDemo';
 // import JobBoardDemo from './demo/JobBoardDemo';
-import StopWatchDemo from './demo/StopWatchDemo';
+// import StopWatchDemo from './demo/StopWatchDemo';
+import TransferListDemo from './demo/TransferListDemo';
 // todo dialog
 function App() {
   return (
     <>
-      <StopWatchDemo />
+      <TransferListDemo />
     </>
   )
 }
