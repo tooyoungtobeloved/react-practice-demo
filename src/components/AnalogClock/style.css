@@ -1,0 +1,162 @@
+.analog-clock {
+    width: 500px;
+    height: 500px;
+    border: 10px solid #333;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .clock-face {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: white;
+    position: relative;
+  }
+  
+  /* 内部白色表盘 */
+  .mark {
+    width: calc(100% - 30px);
+    height: calc(100% - 30px);
+    border-radius: 50%;
+    background: white;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+  }
+  
+  /* 时钟数字样式 */
+  .clock-number {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform-origin: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* 刻度通用样式 */
+  .markers {
+    position: absolute;
+    left: 50%;
+    bottom: 50%; /* 底端对齐圆心 */
+    transform-origin: bottom center;
+    transform: translateX(-50%);
+  }
+  
+  /* 以下为小时刻度（translate-0 至 translate-11，每个旋转角度步长 30°） */
+  .translate-0 {
+    height: 60%;
+    width: 10px;
+    background-color: red;
+    transform: translateX(-50%) rotate(0deg);
+  }
+  .translate-1 {
+    height: 60%;
+    width: 10px;
+    background-color: red;
+    transform: translateX(-50%) rotate(30deg);
+  }
+  .translate-2 {
+    height: 60%;
+    width: 10px;
+    background-color: red;
+    transform: translateX(-50%) rotate(60deg);
+  }
+  .translate-3 {
+    height: 60%;
+    width: 10px;
+    background-color: red;
+    transform: translateX(-50%) rotate(90deg);
+  }
+  .translate-4 {
+    height: 60%;
+    width: 10px;
+    background-color: red;
+    transform: translateX(-50%) rotate(120deg);
+  }
+  .translate-5 {
+    height: 60%;
+    width: 10px;
+    background-color: red;
+    transform: translateX(-50%) rotate(150deg);
+  }
+  .translate-6 {
+    height: 60%;
+    width: 10px;
+    background-color: red;
+    transform: translateX(-50%) rotate(180deg);
+  }
+  .translate-7 {
+    height: 60%;
+    width: 10px;
+    background-color: red;
+    transform: translateX(-50%) rotate(210deg);
+  }
+  .translate-8 {
+    height: 60%;
+    width: 10px;
+    background-color: red;
+    transform: translateX(-50%) rotate(240deg);
+  }
+  .translate-9 {
+    height: 60%;
+    width: 10px;
+    background-color: red;
+    transform: translateX(-50%) rotate(270deg);
+  }
+  .translate-10 {
+    height: 60%;
+    width: 10px;
+    background-color: red;
+    transform: translateX(-50%) rotate(300deg);
+  }
+  .translate-11 {
+    height: 60%;
+    width: 10px;
+    background-color: red;
+    transform: translateX(-50%) rotate(330deg);
+  }
+  
+  /* 分针刻度样式 */
+  .minute-markers {
+    height: 40%;
+    width: 4px;
+    background-color: gray;
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    transform-origin: bottom center;
+    transform: translateX(-50%);
+  }
+  
+  /* 指针通用样式 */
+  .hand {
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    transform-origin: bottom center;
+    transform: translateX(-50%) rotate(0deg);
+    z-index: 3;
+  }
+  
+  /* 各指针 */
+  .hour-hand {
+    height: 100px;
+    width: 6px;
+    background-color: red;
+  }
+  .minute-hand {
+    height: 150px;
+    width: 4px;
+    background-color: red;
+  }
+  .second-hand {
+    height: 180px;
+    width: 2px;
+    background-color: blue;
+  }
