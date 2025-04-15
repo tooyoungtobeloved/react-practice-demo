@@ -9,13 +9,14 @@ import './App.css'
 // import TicTacToeDemo from './demo/TicTacToeDemo';
 // import ImageCarouselDemo from './demo/ImageCarouselDemo';
 // import JobBoardDemo from './demo/JobBoardDemo';
-import AnalogClockDemo from './demo/AnalogClockDemo';
+// import AnalogClockDemo from './demo/AnalogClockDemo';
 // import TransferListDemo from './demo/TransferListDemo';
+import DataTableDemo from './demo/DataTableDemo'
 // todo dialog
 function App() {
   return (
     <>
-      <AnalogClockDemo />
+      <DataTableDemo />
     </>
   )
 }

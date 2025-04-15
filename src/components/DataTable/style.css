@@ -1,0 +1,14 @@
+.table-container {
+    min-width: 600px;
+}
+.table {
+    padding: 0.5rem;
+    width: 100%;
+}
+thead {
+    background-color: #eee;
+}
+td, th {
+    border-bottom: 1px solid #eee;
+    padding: 16px;
+}
