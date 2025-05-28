@@ -11,12 +11,13 @@ import './App.css'
 // import JobBoardDemo from './demo/JobBoardDemo';
 // import AnalogClockDemo from './demo/AnalogClockDemo';
 // import TransferListDemo from './demo/TransferListDemo';
-import DataTableDemo from './demo/DataTableDemo'
+// import DataTableDemo from './demo/DataTableDemo'
+import CascadeDemo from './demo/CascadeDemo'
 // todo dialog
 function App() {
   return (
     <>
-      <DataTableDemo />
+      <CascadeDemo />
     </>
   )
 }
